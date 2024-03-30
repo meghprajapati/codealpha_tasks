@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Calculator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #D9AFD9, #97D9E1);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            padding: 40px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        h2 {
+            color: #007bff;
+            margin-bottom: 30px;
+        }
+        .form-group {
+            margin-bottom: 30px;
+            text-align: left;
+        }
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .form-group input[type="date"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            font-size: 16px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #f9f9f9;
+            color: #555;
+        }
+        .btn {
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            padding: 12px 30px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        #result {
+            font-size: 18px;
+            margin-top: 30px;
+            color: #6c757d;
+        }
+        .bg-circle {
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .bg-circle:nth-child(1) {
+            width: 150px;
+            height: 150px;
+            top: -50px;
+            left: -50px;
+        }
+        .bg-circle:nth-child(2) {
+            width: 200px;
+            height: 200px;
+            bottom: -80px;
+            right: -100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-circle"></div>
+    <div class="bg-circle"></div>
+    <div class="container">
+        <h2>Age Calculator</h2>
+        <div class="form-group">
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" required>
+        </div>
+        <button class="btn" onclick="calculateAge()">Calculate <i class="fas fa-calculator"></i></button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function calculateAge() {
+            const dob = new Date(document.getElementById("dob").value);
+            const now = new Date();
+
+            const ageDiff = now - dob;
+            const ageDate = new Date(ageDiff);
+
+            const years = Math.abs(ageDate.getUTCFullYear() - 1970);
+
+            document.getElementById("result").innerText = `Your age is ${years} years.`;
+        }
+    </script>
+</body>
+</html>
